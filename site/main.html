@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <title>Blovers</title>
+  <script src="../plugin/jquery-3.3.1.js" type="text/javascript"/>
+</head>
+<body>
+<div id="123">
+  <label id="hello" onclick="test()">Hello Spring1</label>
+  <input value="123">
+</div>
+</body>
+<script>
+    function test() {
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/test/request",
+            data: ''
+        })
+            .done(function (msg) {
+                alert('结束');
+            });
+    }
+</script>
+</html>
