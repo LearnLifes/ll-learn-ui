@@ -11,16 +11,46 @@
   <input value="123">
 </div>
 </body>
-<!--<script>
+<script>
     function test() {
-        $.ajax({
-            type: "POST",
-            url: "http://localhost:8080/test/request",
-            data: ''
+        var GET = $.ajax({
+            type: "GET"
+            , contentType: 'application/json;charset=utf-8'
+            , dataType: 'json'
+            , beforeSend: function (request) {
+                request.setRequestHeader('token', 'blove');
+            }
+            , url: "http://localhost:8080/test/hello"
+            , data: ''
+            , success: function (response) {
+                console.log('success===start');
+                console.log(response);
+                console.log('success===end');
+            }
+            , error: function (request) {
+                console.log('error===start');
+                console.log(request);
+                console.log('error===end');
+            }
+            , complete: function (request, status) {
+                console.log('complete===start');
+                console.log(request);
+                console.log(status);
+                console.log('complete===end');
+            }
         })
+        //应用延迟对象,承诺对象
             .done(function (msg) {
-                alert('结束');
+                console.log('jQuery-done===start');
+                console.log(msg)
+                console.log('jQuery-done===end');
+            }).fail(function (msg) {
+                console.log('jQuery-fail===start');
+                console.log(msg);
+                console.log('jQuery-fail===end');
+            }).always(function () {
+                console.log('jQuery-always');
             });
     }
-</script>-->
+</script>
 </html>

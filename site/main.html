@@ -14,9 +14,17 @@
 <script>
     function test() {
         $.ajax({
-            type: "POST",
-            url: "http://localhost:8080/test/request",
-            data: ''
+            type: "POST"
+            , url: "http://localhost:8080/test/request"
+            , contentType: 'application/json;charset=utf-8'
+            , dataType: 'json'
+            , data: ''
+
+            , beforeSend: function (XMLHttpRequest) {
+                console.log('=======请求前token设置========');
+                XMLHttpRequest.setRequestHeader('token', '123');
+                console.log('=======token设置后========')
+            }
         })
             .done(function (msg) {
                 alert('结束');
